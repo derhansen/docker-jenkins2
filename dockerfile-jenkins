@@ -1,0 +1,14 @@
+FROM jenkinsci/jenkins
+MAINTAINER derhansen@gmail.com
+
+# Setup Jenkins Directories
+
+USER root
+RUN mkdir /var/log/jenkins
+RUN mkdir /var/cache/jenkins
+RUN chown -R jenkins:jenkins /var/log/jenkins
+RUN chown -R jenkins:jenkins /var/cache/jenkins
+USER jenkins
+
+# Set defaults
+ENV JAVA_OPTS="-Xmx8192m"
